@@ -4,76 +4,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MuteMi — Mute every mic. One keystroke.</title>
-  <meta name="description"
-    content="MuteMi is a macOS menu-bar app that mutes every microphone on your Mac with a single keyboard shortcut. No permissions hassle. 100% offline." />
-  <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Samuel</title>
+  <meta name="description" content="Hi, I'm Samuel. I don't have a personal website but I make software." />
+  <link rel="icon" type="image/png" href="mutemi-app/logo.png" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      padding: 48px 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #d2d2d7;
+      color: #1d1d1f;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .intro {
+      max-width: 540px;
+      text-align: center;
+    }
+
+    .intro h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .apps-label {
+      margin: 0 0 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6e6e73;
+      text-align: center;
+    }
+
+    .app-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 24px 16px 16px;
+      border: 1px solid #e3e3e6;
+      border-radius: 20px;
+      background: #ffffff;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .app-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
+    }
+
+    .app-card img {
+      width: 64px;
+      height: 64px;
+      border-radius: 15px;
+      display: block;
+    }
+
+    .app-card__name {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .app-card__tagline {
+      font-size: 0.95rem;
+      color: #6e6e73;
+    }
+  </style>
 </head>
 
 <body>
-  <main>
-    <section class="hero">
-      <img class="logo" src="logo.png" alt="MuteMi app icon" width="160" height="160" />
-      <h1>MuteMi</h1>
-      <p class="tagline">Mute every mic. One keystroke.</p>
+  <section class="intro">
+    <h1>
+      👋 Hi, I'm Samuel.
+      <br />
+      I don't have a personal website
+      <br />
+      but I make software
+    </h1>
+  </section>
 
-      <div class="store-buttons">
-        <!-- TODO: replace #FREE_APP_URL with the real App Store link for the Free app -->
-        <a class="store-btn" href="#FREE_APP_URL">
-          <span class="store-btn__apple" aria-hidden="true"></span>
-          <span class="store-btn__text">
-            <small>Download — Free</small>
-            <strong>App Store</strong>
-          </span>
-        </a>
-        <!-- TODO: replace #PAID_APP_URL with the real App Store link for the Pro (paid) app -->
-        <a class="store-btn" href="#PAID_APP_URL">
-          <span class="store-btn__apple" aria-hidden="true"></span>
-          <span class="store-btn__text">
-            <small>Download — Pro</small>
-            <strong>App Store</strong>
-          </span>
-        </a>
-      </div>
-    </section>
-
-    <section class="features">
-      <p>
-        MuteMi sits quietly in your menu bar and gives you one keyboard shortcut
-        to instantly mute or unmute <strong>every</strong> microphone on your
-        Mac — not just the default one.
-        <br />
-        NO Accessibility permissions, NO Input
-        Monitoring, NO background daemons. The menu-bar icon turns red the moment
-        you're muted, so you always know your status at a glance.
-      </p>
-    </section>
-
-    <section class="gallery">
-      <figure><img src="images/minimal-small.png" alt="MuteMi minimal menu bar view"
-          loading="lazy" /></figure>
-      <figure><img src="images/list-small.png" alt="List of connected microphones"
-          loading="lazy" /></figure>
-      <figure><img src="images/options-small.png"
-          alt="Per-device volume sliders and options" loading="lazy" /></figure>
-      <figure><img src="images/notif_muted-small.png" alt="Muted notification"
-          loading="lazy" /></figure>
-      <figure><img src="images/notif_avail-small.png"
-          alt="Microphone available notification" loading="lazy" /></figure>
-      <figure><img src="images/notif_change_device-small.png"
-          alt="Device changed notification" loading="lazy" />
-      </figure>
-    </section>
-  </main>
-
-  <footer>
-    <a href="privacy.html">Privacy Policy</a>
-    <span class="dot">·</span>
-    <span>© 2026 Samuel Nunes</span>
-  </footer>
-
-  <script src="viewer.js" defer></script>
+  <section>
+    <p class="apps-label">Apps</p>
+    <a class="app-card" href="mutemi-app/">
+      <img src="mutemi-app/logo.png" alt="MuteMi app icon" width="64" height="64" />
+      <span>
+        <span class="app-card__name">MuteMi</span><br />
+        <span class="app-card__tagline">Mute every mic. One keystroke.</span>
+      </span>
+    </a>
+  </section>
 </body>
 
 </html>
