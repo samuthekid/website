@@ -2,7 +2,7 @@
 
 Personal site. A minimal landing page at the root, with each app living in its own subpage.
 
-This is a plain static site (no build step) served via **GitHub Pages**.
+Plain static site (no build step) hosted at **[samuapps.dev](https://samuapps.dev/)**.
 
 - `index.html` — personal homepage (intro + links to app subpages)
 - `mutemi-app/` — **MuteMi** marketing page and privacy policy
@@ -15,14 +15,11 @@ This is a plain static site (no build step) served via **GitHub Pages**.
 
 ## Hosting
 
-Published with GitHub Pages from the `main` branch, root folder.
+- Site: <https://samuapps.dev/>
+- MuteMi: <https://samuapps.dev/mutemi-app/>
+- MuteMi privacy policy: <https://samuapps.dev/mutemi-app/privacy.html>
 
-- Site: <https://samuthekid.github.io/website/>
-- MuteMi: <https://samuthekid.github.io/website/mutemi-app/>
-- MuteMi privacy policy: <https://samuthekid.github.io/website/mutemi-app/privacy.html>
+## License
 
-To preview locally: `python3 -m http.server 8000` then open
-<http://localhost:8000/>.
-
-> The two App Store buttons in `mutemi-app/index.html` use placeholder links
-> (`#FREE_APP_URL`, `#PAID_APP_URL`) — replace them once the apps are live.
+All content is licensed under [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Except for the MuteMi logo, which is licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
