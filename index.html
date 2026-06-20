@@ -54,6 +54,8 @@
       display: inline-flex;
       align-items: center;
       gap: 18px;
+      width: 420px;
+      max-width: 100%;
       padding: 16px 24px 16px 16px;
       border: 1px solid #e3e3e6;
       border-radius: 20px;
@@ -84,6 +86,7 @@
     .app-card__tagline {
       font-size: 0.95rem;
       color: #6e6e73;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -99,13 +102,20 @@
     </h1>
   </section>
 
-  <section>
-    <p class="apps-label">Apps</p>
+  <section style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+    <p class="apps-label" style="margin:0;">Apps</p>
     <a class="app-card" href="mutemi-app/">
       <img src="mutemi-app/logo.png" alt="MuteMi app icon" width="64" height="64" />
       <span>
         <span class="app-card__name">MuteMi</span><br />
         <span class="app-card__tagline">Mute every mic. One keystroke.</span>
+      </span>
+    </a>
+    <a class="app-card" href="blocked-by-square/">
+      <img src="blocked-by-square/logo.png" alt="BlockedBySquare app icon" width="64" height="64" />
+      <span>
+        <span class="app-card__name">BlockedBySquare</span><br />
+        <span class="app-card__tagline">Lock your Mac. Don't touch.</span>
       </span>
     </a>
   </section>

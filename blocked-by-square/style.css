@@ -1,0 +1,366 @@
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f5f5f7;
+  --text: #1d1d1f;
+  --text-soft: #6e6e73;
+  --border: #e3e3e6;
+  --accent: #0a84ff;
+  --btn-bg: #1d1d1f;
+  --btn-text: #ffffff;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1e;
+    --bg-soft: #2c2c2e;
+    --text: #f5f5f7;
+    --text-soft: #aeaeb2;
+    --border: #3a3a3c;
+    --btn-bg: #ffffff;
+    --btn-text: #000000;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* the full-bleed marquee uses 100vw */
+}
+
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+/* ---------- Hero (dark, fills the screen) ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  overflow: hidden;
+  background: #05060a;
+  color: #f5f5f7;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Wall of terminals scattered behind everything (positioned by JS) */
+.terminal-wall {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 45%, #000 60%, transparent 100%);
+          mask-image: radial-gradient(ellipse 85% 80% at 50% 45%, #000 60%, transparent 100%);
+}
+
+.term {
+  position: absolute;
+  width: 440px;
+  height: 340px;
+  background: rgba(18, 20, 28, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+}
+
+.term__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #2a2d38;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.term__bar i {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #ff5f57; display: inline-block;
+}
+.term__bar i:nth-child(2) { background: #febc2e; }
+.term__bar i:nth-child(3) { background: #28c840; }
+.term__bar span {
+  margin-left: 8px;
+  font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.term__body {
+  padding: 12px 14px;
+  font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #c9d4e3;
+  white-space: pre;
+  text-align: left; /* hero centers text by default; terminals read left-aligned */
+  overflow: hidden; /* clip the scrolling text to the body so it never rides over the header */
+}
+/* scroll the content up forever; duplicated lines make it seamless. duration set per-terminal in JS */
+.term__body span { display: block; animation: scrollUp linear infinite; }
+
+@keyframes scrollUp {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+.t-cmd  { color: #f5f5f7; }
+.t-ok   { color: #28c840; }
+.t-info { color: #5ac8fa; }
+.t-warn { color: #febc2e; }
+.t-dim  { color: rgba(201, 212, 227, 0.45); }
+.t-ai   { color: #bf9bff; }
+
+/* Frosted glass card wrapping the headline so it stays readable over the terminals */
+.hero__content {
+  position: relative;
+  z-index: 5; /* above the square (z-3) so the glass slides behind the text box */
+  max-width: 560px;
+  padding: 44px 40px;
+  border-radius: 24px;
+  background: rgba(18, 20, 26, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+          backdrop-filter: blur(24px) saturate(1.2);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 14px;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: rgba(245, 245, 247, 0.8);
+  margin: 28px auto;
+  max-width: 440px;
+}
+
+.hero__hint {
+  margin: 24px 0 0;
+  font-size: 0.9rem !important;
+  color: rgba(245, 245, 247, 0.55);
+}
+
+/* ---------- The glass square (follows the cursor) ---------- */
+.glass-square {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px; /* center on the pointer */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(16px);
+          backdrop-filter: blur(16px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* one line near the top, one near the bottom — like the app */
+  padding: 24px 12px 20px;
+  pointer-events: none; /* never blocks hero links/buttons */
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+.glass-square.is-visible { opacity: 0.95; }
+
+.glass-square__text {
+  font-weight: 500;
+  font-size: 15px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+.glass-square.is-swapping .glass-square__text { opacity: 0; }
+
+/* Auto-pilot fake cursor (shown when the real mouse isn't over the hero) */
+.fake-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4; /* above the square (3), behind the content card (5) */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+  will-change: transform;
+}
+.fake-cursor.is-visible { opacity: 1; }
+.fake-cursor svg { display: block; }
+
+/* ---------- Why? (horizontal carousel) ---------- */
+.why {
+  padding: 88px 0 56px;
+}
+.why-track {
+  /* full-bleed: break out of the centered 920px container */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden; /* no user scroll — it auto-scrolls */
+  padding: 6px 0 20px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.why-row {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: whyScroll 60s linear infinite;
+}
+.why-track:hover .why-row { animation-play-state: paused; }
+@keyframes whyScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* row holds 2 copies, so -50% = one full loop */
+}
+.why-card {
+  flex: 0 0 260px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.why-card .emoji { font-size: 1.8rem; display: block; margin-bottom: 12px; }
+.why-card h3 { margin: 0 0 6px; font-size: 1.1rem; }
+.why-card p { margin: 0; color: var(--text-soft); font-size: 0.95rem; }
+
+/* ---------- How it works ---------- */
+.how {
+  padding: 88px 0 64px;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.step {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+}
+.step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.step h3 { margin: 0 0 8px; font-size: 1.15rem; }
+.step p { margin: 0; color: var(--text-soft); font-size: 0.98rem; }
+.step kbd {
+  font: 600 0.85em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
+/* ---------- Features ---------- */
+.features {
+  padding: 64px 0;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.feature {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.feature h3 { margin: 0 0 6px; font-size: 1.08rem; }
+.feature p { margin: 0; color: var(--text-soft); font-size: 0.96rem; }
+.feature .emoji { font-size: 1.5rem; display: block; margin-bottom: 12px; }
+
+/* ---------- Download CTA ---------- */
+.cta {
+  text-align: center;
+  padding: 64px 0 88px;
+}
+.store-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 14px;
+  min-width: 220px;
+  justify-content: center;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.store-btn:hover { transform: translateY(-2px); opacity: 0.92; }
+.store-btn__apple {
+  width: 26px; height: 26px; flex: 0 0 auto;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.store-btn__text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+.store-btn__text small { font-size: 0.72rem; opacity: 0.85; }
+.store-btn__text strong { font-size: 1.2rem; font-weight: 600; }
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 28px 24px;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+footer a { color: var(--text-soft); text-decoration: none; }
+footer a:hover { color: var(--text); }
+footer .dot { margin: 0 10px; }
