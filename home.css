@@ -1,0 +1,69 @@
+/* Homepage-only layout. Tokens, base + .store-btn live in shared/shared.css. */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 48px 24px;
+  background: var(--bg-soft);
+}
+
+.intro {
+  max-width: 540px;
+  text-align: center;
+}
+.intro h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.apps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.apps-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.app-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  max-width: 420px;
+  padding: 16px 24px 16px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.app-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
+}
+.app-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 15px;
+  display: block;
+}
+.app-card__name { font-size: 1.25rem; font-weight: 600; }
+.app-card__tagline { font-size: 0.95rem; color: var(--text-soft); }

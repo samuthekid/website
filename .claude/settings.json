@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(swift build *)",
+      "Bash(./scripts/bundle.sh --run --reset)",
+      "Bash(log show *)",
+      "Bash(bash -n bundle.sh)",
+      "Bash(open /Users/samuthekid/Projects/website/blocked-by-square/index.html)",
+      "Bash(open /Users/samuthekid/Projects/website/index.html)",
+      "Bash(python3 -m http.server 8123)",
+      "mcp__chrome-devtools__new_page",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__list_console_messages",
+      "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__emulate"
+    ]
+  }
+}

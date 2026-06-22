@@ -8,7 +8,9 @@
   <meta name="description"
     content="MuteMi is a macOS menu-bar app that mutes every microphone on your Mac with a single keyboard shortcut. No permissions hassle. 100% offline." />
   <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="../shared/shared.css" />
   <link rel="stylesheet" href="style.css" />
+  <script src="../shared/components.js" defer></script>
 </head>
 
 <body>
@@ -20,21 +22,9 @@
 
       <div class="store-buttons">
         <!-- TODO: replace #FREE_APP_URL with the real App Store link for the Free app -->
-        <a class="store-btn" href="#FREE_APP_URL">
-          <span class="store-btn__apple" aria-hidden="true"></span>
-          <span class="store-btn__text">
-            <small>Download — Free</small>
-            <strong>App Store</strong>
-          </span>
-        </a>
+        <store-button href="#FREE_APP_URL" note="Download — Free" cta="App Store"></store-button>
         <!-- TODO: replace #PAID_APP_URL with the real App Store link for the Pro (paid) app -->
-        <a class="store-btn" href="#PAID_APP_URL">
-          <span class="store-btn__apple" aria-hidden="true"></span>
-          <span class="store-btn__text">
-            <small>Download — Pro</small>
-            <strong>App Store</strong>
-          </span>
-        </a>
+        <store-button href="#PAID_APP_URL" note="Download — Pro" cta="App Store"></store-button>
       </div>
     </section>
 
@@ -51,21 +41,17 @@
     </section>
 
     <section class="gallery">
-      <figure><img src="images/minimal-small.png" alt="MuteMi minimal menu bar view" loading="lazy" /></figure>
-      <figure><img src="images/list-small.png" alt="List of connected microphones" loading="lazy" /></figure>
-      <figure><img src="images/options-small.png" alt="Per-device volume sliders and options" loading="lazy" /></figure>
-      <figure><img src="images/notif_muted-small.png" alt="Muted notification" loading="lazy" /></figure>
-      <figure><img src="images/notif_avail-small.png" alt="Microphone available notification" loading="lazy" /></figure>
-      <figure><img src="images/notif_change_device-small.png" alt="Device changed notification" loading="lazy" />
+      <figure class="card"><img src="images/minimal-small.png" alt="MuteMi minimal menu bar view" loading="lazy" /></figure>
+      <figure class="card"><img src="images/list-small.png" alt="List of connected microphones" loading="lazy" /></figure>
+      <figure class="card"><img src="images/options-small.png" alt="Per-device volume sliders and options" loading="lazy" /></figure>
+      <figure class="card"><img src="images/notif_muted-small.png" alt="Muted notification" loading="lazy" /></figure>
+      <figure class="card"><img src="images/notif_avail-small.png" alt="Microphone available notification" loading="lazy" /></figure>
+      <figure class="card"><img src="images/notif_change_device-small.png" alt="Device changed notification" loading="lazy" />
       </figure>
     </section>
   </main>
 
-  <footer>
-    <a href="privacy.html">Privacy Policy</a>
-    <span class="dot">·</span>
-    <span>© 2026 Samuel</span>
-  </footer>
+  <site-footer link-href="privacy.html" link-text="Privacy Policy"></site-footer>
 
   <script src="viewer.js" defer></script>
 </body>

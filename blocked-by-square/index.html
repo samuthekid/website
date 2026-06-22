@@ -7,7 +7,9 @@
   <title>BlockedBySquare — Lock your Mac. Don't touch.</title>
   <meta name="description" content="Step away. Let the agents cook. A glowing glass square blocks all keyboard and mouse input on your Mac — so people can look, but not touch." />
   <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="../shared/shared.css" />
   <link rel="stylesheet" href="style.css" />
+  <script src="../shared/components.js" defer></script>
 </head>
 
 <body>
@@ -26,13 +28,8 @@
       <h1>Step away.<br />Let the agents cook.</h1>
       <p>Block every keystroke and click on your Mac — look, but don't touch.</p>
       <div class="store-buttons">
-        <a class="store-btn" href="https://github.com/samuthekid/blocked_by_square/releases/latest">
-          <span class="store-btn__apple"></span>
-          <span class="store-btn__text">
-            <small>Download for</small>
-            <strong>macOS</strong>
-          </span>
-        </a>
+        <store-button href="https://github.com/samuthekid/blocked_by_square/releases/latest" note="Download for"
+          cta="macOS"></store-button>
       </div>
       <p class="hero__hint">see the glass square? — that's the lock</p>
     </div>
@@ -45,14 +42,38 @@
       <p class="section-sub">Because the moment you step away is the moment something gets touched.</p>
       <div class="why-track">
         <div class="why-row" id="why-row">
-          <div class="why-card"><span class="emoji">☕</span><h3>Coffee run</h3><p>Your agents are mid-task. Lock it, grab a refill, come back to finished work.</p></div>
-          <div class="why-card"><span class="emoji">🐈</span><h3>The cat</h3><p>She walks across keyboards. Now she walks across a glass square instead.</p></div>
-          <div class="why-card"><span class="emoji">👶</span><h3>Tiny hands</h3><p>The toddler wants to "help." Let them mash the trackpad, consequence-free.</p></div>
-          <div class="why-card"><span class="emoji">🧑‍💻</span><h3>Helpful coworker</h3><p>Stop the over-eager teammate from "just fixing one thing" on your machine.</p></div>
-          <div class="why-card"><span class="emoji">🚽</span><h3>Bio break</h3><p>Walk away from a long run without a lock screen swallowing the output.</p></div>
-          <div class="why-card"><span class="emoji">🎥</span><h3>Screen sharing</h3><p>Present live logs and agents without anyone — including you — fat-fingering input.</p></div>
-          <div class="why-card"><span class="emoji">🏢</span><h3>Hot desk</h3><p>Mark your machine "in use, hands off" while you're in a meeting nearby.</p></div>
-          <div class="why-card"><span class="emoji">😈</span><h3>Petty revenge</h3><p>Hand your laptop to the friend who rearranges your icons. Good luck.</p></div>
+          <div class="why-card card"><span class="emoji">☕</span>
+            <h3>Coffee run</h3>
+            <p>Your agents are mid-task. Lock it, grab a refill, come back to finished work.</p>
+          </div>
+          <div class="why-card card"><span class="emoji">🐈</span>
+            <h3>The cat</h3>
+            <p>She walks across keyboards. Now she walks across a glass square instead.</p>
+          </div>
+          <div class="why-card card"><span class="emoji">👶</span>
+            <h3>Tiny hands</h3>
+            <p>The toddler wants to "help." Let them mash the trackpad, consequence-free.</p>
+          </div>
+          <div class="why-card card"><span class="emoji">🧑‍💻</span>
+            <h3>Helpful coworker</h3>
+            <p>Stop the over-eager teammate from "just fixing one thing" on your machine.</p>
+          </div>
+          <div class="why-card card"><span class="emoji">🚽</span>
+            <h3>Bio break</h3>
+            <p>Walk away from a long run without a lock screen swallowing the output.</p>
+          </div>
+          <div class="why-card card"><span class="emoji">🎥</span>
+            <h3>Screen sharing</h3>
+            <p>Present live logs and agents without anyone — including you — fat-fingering input.</p>
+          </div>
+          <div class="why-card card"><span class="emoji">🏢</span>
+            <h3>Hot desk</h3>
+            <p>Mark your machine "in use, hands off" while you're in a meeting nearby.</p>
+          </div>
+          <div class="why-card card"><span class="emoji">😈</span>
+            <h3>Petty revenge</h3>
+            <p>Hand your laptop to the friend who rearranges your icons. Good luck.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -85,32 +106,32 @@
       <h2>Built for people who leave the keyboard running</h2>
       <p class="section-sub">A tiny menu-bar app. No Dock icon, no clutter.</p>
       <div class="feature-grid">
-        <div class="feature">
+        <div class="feature card">
           <span class="emoji">🛡️</span>
           <h3>Two security modes</h3>
           <p>Low just blocks input. Max locks your Mac the instant you hit ESC — nothing gets through.</p>
         </div>
-        <div class="feature">
+        <div class="feature card">
           <span class="emoji">🖥️</span>
           <h3>Every display</h3>
           <p>The lock covers all your monitors at once. The square follows your cursor across them.</p>
         </div>
-        <div class="feature">
+        <div class="feature card">
           <span class="emoji">✍️</span>
           <h3>Your words</h3>
           <p>Customize both lines of text, their colors, size and opacity — per light and dark mode.</p>
         </div>
-        <div class="feature">
+        <div class="feature card">
           <span class="emoji">⌨️</span>
           <h3>Your shortcut</h3>
           <p>Pick any global hotkey to arm the lock. The default is ⌘⇧L; change it in seconds.</p>
         </div>
-        <div class="feature">
+        <div class="feature card">
           <span class="emoji">🪟</span>
           <h3>Official Apple Glass API</h3>
           <p>Built on Apple's native glass effect — the square looks like it belongs in macOS, because it's made of the real thing.</p>
         </div>
-        <div class="feature">
+        <div class="feature card">
           <span class="emoji">🚀</span>
           <h3>Open at login</h3>
           <p>Launches quietly with your Mac and waits in the menu bar until you need it.</p>
@@ -123,22 +144,13 @@
       <h2>Don't touch my Mac.</h2>
       <p class="section-sub">Free. Notarized. macOS 13 Ventura or later.</p>
       <div class="store-buttons">
-        <a class="store-btn" href="https://github.com/samuthekid/blocked_by_square/releases/latest">
-          <span class="store-btn__apple"></span>
-          <span class="store-btn__text">
-            <small>Download for</small>
-            <strong>macOS</strong>
-          </span>
-        </a>
+        <store-button href="https://github.com/samuthekid/blocked_by_square/releases/latest" note="Download for"
+          cta="macOS"></store-button>
       </div>
     </section>
   </main>
 
-  <footer>
-    <a href="../">samuapps.dev</a>
-    <span class="dot">·</span>
-    <a href="https://github.com/samuthekid/blocked_by_square">GitHub</a>
-  </footer>
+  <site-footer link-href="https://github.com/samuthekid/blocked_by_square" link-text="GitHub"></site-footer>
 
   <script src="square.js"></script>
 </body>

@@ -6,10 +6,9 @@
   var MIN_SCALE = 1;
   var MAX_SCALE = 6;
 
-  // ---- Build the overlay once ----
-  var overlay = document.createElement("div");
+  // ---- Build the overlay once (a native <dialog> gives ESC-close, focus trap, inert bg) ----
+  var overlay = document.createElement("dialog");
   overlay.className = "viewer";
-  overlay.setAttribute("aria-hidden", "true");
   overlay.innerHTML =
     '<button class="viewer__close" type="button" aria-label="Close">&times;</button>' +
     '<div class="viewer__stage"><img class="viewer__img" alt="" draggable="false" /></div>' +
@@ -66,18 +65,16 @@
     img.src = fullSrc;
     img.alt = altText || "";
     reset();
-    overlay.classList.add("is-open");
-    overlay.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
+    overlay.showModal();
+    document.body.style.overflow = "hidden"; // dialog inerts the bg but doesn't lock scroll
   }
 
-  function close() {
-    overlay.classList.remove("is-open");
-    overlay.setAttribute("aria-hidden", "true");
+  // Runs for every close path — close button, backdrop, and native ESC.
+  overlay.addEventListener("close", function () {
     document.body.style.overflow = "";
     // Drop the (large) source so it isn't kept in memory.
     img.removeAttribute("src");
-  }
+  });
 
   // ---- Wire up gallery thumbnails ----
   var thumbs = document.querySelectorAll(".gallery img");
@@ -88,20 +85,16 @@
     });
   });
 
-  closeBtn.addEventListener("click", close);
+  closeBtn.addEventListener("click", function () { overlay.close(); });
 
   // Click the backdrop (not the image) to close — only when not zoomed in.
   overlay.addEventListener("click", function (e) {
-    if (e.target === overlay || (e.target === stage && scale <= 1.001)) close();
-  });
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && overlay.classList.contains("is-open")) close();
+    if (e.target === overlay || (e.target === stage && scale <= 1.001)) overlay.close();
   });
 
   // ---- Wheel zoom ----
   stage.addEventListener("wheel", function (e) {
-    if (!overlay.classList.contains("is-open")) return;
+    if (!overlay.open) return;
     e.preventDefault();
     var rect = stage.getBoundingClientRect();
     var factor = Math.exp(-e.deltaY * 0.0015);
@@ -151,7 +144,7 @@
   }
 
   stage.addEventListener("touchstart", function (e) {
-    if (!overlay.classList.contains("is-open")) return;
+    if (!overlay.open) return;
     var rect = stage.getBoundingClientRect();
     if (e.touches.length === 2) {
       touchStartDist = dist(e.touches[0], e.touches[1]);
@@ -173,7 +166,7 @@
   }, { passive: false });
 
   stage.addEventListener("touchmove", function (e) {
-    if (!overlay.classList.contains("is-open")) return;
+    if (!overlay.open) return;
     if (e.touches.length === 2) {
       e.preventDefault();
       var d = dist(e.touches[0], e.touches[1]);
