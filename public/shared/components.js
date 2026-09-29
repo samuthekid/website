@@ -13,8 +13,10 @@ customElements.define('store-button', class extends HTMLElement {
 
 customElements.define('site-footer', class extends HTMLElement {
   connectedCallback() {
+    // Links come from link-href/link-text, or from <a> children for several links.
     const href = this.getAttribute('link-href'), text = this.getAttribute('link-text');
-    const mid = href ? `<a href="${href}">${text}</a><span class="dot">·</span>` : '';
+    const links = href ? [`<a href="${href}">${text}</a>`] : [...this.querySelectorAll('a')].map(a => a.outerHTML);
+    const mid = links.map(l => `${l}<span class="dot">·</span>`).join('');
     this.innerHTML =
       `<footer><a href="../">samuapps.dev</a><span class="dot">·</span>` +
       `${mid}<span>© 2026 Samuel</span></footer>`;

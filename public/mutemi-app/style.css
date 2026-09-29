@@ -145,14 +145,3 @@ h1 {
   .viewer__hint { font-size: 0.8rem; }
 }
 
-/* ---------- Prose (privacy page) ---------- */
-.prose {
-  max-width: 720px;
-  padding-top: 64px;
-  padding-bottom: 48px;
-}
-.prose .back { margin-bottom: 32px; }
-.prose h1 { font-size: 2.4rem; margin-bottom: 4px; }
-.prose .updated { color: var(--text-soft); margin-top: 0; }
-.prose h2 { font-size: 1.3rem; margin-top: 36px; }
-.prose a { color: var(--accent); }
