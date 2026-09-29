@@ -1,11 +1,13 @@
 # Samuel — website
 
 Plain static site (no build step), hosted at **[samuapps.dev](https://samuapps.dev/)**.
-A minimal landing page at the root; each app lives in its own subpage.
+Everything public lives in `public/`. Cloudflare Workers serves only that folder (`wrangler.jsonc`).
 
-- `index.html` — homepage (intro + links to the apps)
-- `mutemi-app/` — **MuteMi** marketing page + privacy policy
-- `blocked-by-square/` — **BlockedBySquare** marketing page
+- `public/index.html` — homepage (intro + links to the apps)
+- `public/mutemi-app/` — **MuteMi** marketing page + privacy policy
+- `public/blocked-by-square/` — **BlockedBySquare** marketing page + privacy policy
+
+Local preview: `python3 -m http.server -d public 8123`
 
 ## License
 
